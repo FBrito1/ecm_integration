@@ -3,9 +3,22 @@ require('dotenv').config()
 const defaultSettings = {
   watch: process.env.PM2_WATCH || false,
   exec_mode: 'cluster',
-  namespace: process.env.SLS_ENV
+  namespace: process.env.NODE_ENV
 }
 
 module.exports = {
-  apps: []
+  apps: [
+    {
+      name: 'Process Ecommerce Products',
+      script: './src/modules/jobs/processEcomProducts/index.js',
+      error: './logs/jobs/processEcomProducts/error.log',
+      ...defaultSettings
+    },
+    {
+      name: 'Process ERP Data',
+      script: './src/modules/jobs/processErpData/index.js',
+      error: './logs/jobs/processErpData/error.log',
+      ...defaultSettings
+    }
+  ]
 }
