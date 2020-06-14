@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-async function processPayload (payloads, entityId) {
+async function processPayload(payloads, entityId) {
   const filePath = path.resolve(
     __dirname,
     '..',
@@ -18,6 +18,7 @@ async function processPayload (payloads, entityId) {
   const receipts = []
 
   payloads.forEach((p) => {
+    console.log('processing product', p.body.productId)
     receipts.push({
       entityId: 'productId',
       feedbackContent: {
