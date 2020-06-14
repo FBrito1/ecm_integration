@@ -19,6 +19,8 @@ const main = async () => {
     token
   })
 
+  console.log('messageIdsArr', messageIdsArr)
+
   return messageIdsArr
 }
 

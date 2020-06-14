@@ -19,6 +19,7 @@ module.exports = {
       name: 'Process ERP Data',
       script: './src/modules/jobs/processErpData/index.js',
       error: './logs/jobs/processErpData/error.log',
+      autorestart: false,
       ...defaultSettings
     }
   ]
