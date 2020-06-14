@@ -3,7 +3,7 @@ const { getPayload } = require('./services/payload-service')
 const { getTranslatePayload } = require('./services/translation-service')
 const { getToken, submitMessage } = require('./services/integration-service')
 
-async function handleIntegration () {
+const main = async () => {
   const payload = await getPayload()
 
   const translatePayload = getTranslatePayload(payload)
@@ -22,10 +22,13 @@ async function handleIntegration () {
   return messageIdsArr
 }
 
-handleIntegration()
-  .then(() => {
-    console.log('finish running')
-  })
-  .catch((err) => {
-    console.log('Error while runnig integration process: ', err)
+const start = async () => {
+  await main()
+}
+
+start()
+  .then(() => process.exit(0))
+  .catch((e) => {
+    console.log('Somenthing went wrong', e)
+    process.exit(1)
   })

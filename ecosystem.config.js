@@ -12,6 +12,7 @@ module.exports = {
       name: 'Process Ecommerce Products',
       script: './src/modules/jobs/processEcomProducts/index.js',
       error: './logs/jobs/processEcomProducts/error.log',
+      autorestart: true,
       ...defaultSettings
     },
     {
